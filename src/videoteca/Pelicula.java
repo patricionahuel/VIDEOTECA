@@ -5,6 +5,9 @@
  */
 package videoteca;
 
+import javax.json.Json;
+import javax.json.JsonObjectBuilder;
+
 /**
 
  *
@@ -82,7 +85,16 @@ public class Pelicula {
         
     }
     
-    
+     public JsonObjectBuilder toJson(){
+        JsonObjectBuilder json=Json.createObjectBuilder();
+        
+        json.add("nombre",titulo);
+        json.add("enlace",sinopsis);
+        json.add("reparto",reparto.toJson());
+        json.add("genero", genero);
+        json.add("IMDB",IMDB);
+        return json;
+    }
     
 }
 

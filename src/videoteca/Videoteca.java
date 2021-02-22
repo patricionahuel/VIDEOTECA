@@ -6,6 +6,8 @@
 package videoteca;
 
 import java.time.LocalDate;
+import javax.json.Json;
+import javax.json.JsonObjectBuilder;
 
 /**
  *
@@ -65,7 +67,17 @@ public class Videoteca {
         
     }
     
-    
+    public JsonObjectBuilder toJson ()
+    {
+         JsonObjectBuilder json=Json.createObjectBuilder();
+        
+        json.add("nombre",nombre);
+        json.add("ubicacion",ubicacion);
+        json.add("peliculas",peliculas.toJson());
+        json.add("fechaActualizacion", fechaActualizacion.toString());
+        
+        return json;
+    }
    
     
 }

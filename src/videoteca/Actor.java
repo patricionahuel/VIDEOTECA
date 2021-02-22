@@ -5,6 +5,11 @@
  */
 package videoteca;
 
+import java.math.BigDecimal;
+import javax.json.Json;
+import javax.json.JsonObjectBuilder;
+
+
 /**
  *
  * @author patricio
@@ -43,5 +48,11 @@ public class Actor {
         return "<Actor><nombre>"+nombre+"</nombre><enlace>"+enlace+"</enlace></Actor>";
     }
     
-    
+    public JsonObjectBuilder toJson(){
+        JsonObjectBuilder json=Json.createObjectBuilder();
+        
+        json.add("nombre",nombre);
+        json.add("enlace",enlace);
+        return json;
+    }
 }

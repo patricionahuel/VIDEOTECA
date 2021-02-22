@@ -7,6 +7,8 @@ package videoteca;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.json.Json;
+import javax.json.JsonArrayBuilder;
 
 /**
  *
@@ -34,6 +36,20 @@ public class Peliculas {
         return s;
         
     }
+      
+    public JsonArrayBuilder toJson(){
+        JsonArrayBuilder ja=Json.createArrayBuilder();
+        for(Pelicula pelicula : peliculas){
+            ja.add(pelicula.toJson());
+        }
+        
+        return ja;
+        
+        
+    }
+        
+        
+        
         
     
 }
