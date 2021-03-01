@@ -26,6 +26,13 @@ public class Videoteca {
         this.peliculas = peliculas;
         this.fechaActualizacion = fechaActualizacion;
     }
+    
+    public Videoteca(String nombre, String ubicacion) {
+        this.nombre = nombre;
+        this.ubicacion = ubicacion;
+        this.peliculas = new Peliculas();
+        this.fechaActualizacion = LocalDate.now();
+    }
 
     public String getNombre() {
         return nombre;
@@ -57,6 +64,12 @@ public class Videoteca {
 
     public void setFechaActualizacion(LocalDate fechaActualizacion) {
         this.fechaActualizacion = fechaActualizacion;
+    }
+    
+    public void add (Pelicula pelicula)
+    {
+        peliculas.add(pelicula);
+        
     }
     
     public String toXml()

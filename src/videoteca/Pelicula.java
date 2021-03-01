@@ -14,6 +14,9 @@ import javax.json.JsonObjectBuilder;
  * @author patricio
  */
 public class Pelicula {
+    private static int siguienteId=0;
+    
+    
     private int id;
     private String titulo;
     private String sinopsis;
@@ -21,13 +24,19 @@ public class Pelicula {
     private String genero;
     private String IMDB;
 
-    public Pelicula(int id, String titulo, String sinopsis, Reparto reparto, String genero, String IMDB) {
+    public Pelicula(int id,String titulo, String sinopsis, Reparto reparto, String genero, String IMDB) {
         this.id = id;
         this.titulo = titulo;
         this.sinopsis = sinopsis;
         this.reparto = reparto;
         this.genero = genero;
         this.IMDB = IMDB;
+    }
+    
+    public Pelicula(String titulo, String sinopsis, Reparto reparto, String genero, String IMDB) {
+        this(siguienteId,titulo,sinopsis,reparto,genero,IMDB);
+        siguienteId++;
+        
     }
 
     public int getId() {
