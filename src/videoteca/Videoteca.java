@@ -77,6 +77,10 @@ public class Videoteca {
         
     }
     
+    public Pelicula getPelicula(int id){
+        return peliculas.get(id);
+    }
+    
     public String toXml()
     {
         String s="<Videoteca><nombre>"+nombre+"</nombre><ubicacion"+ubicacion+"</ubicacion>"+peliculas.toXml()+"<fechaActualizacion>"+fechaActualizacion+"</fechaActualizacion></Videoteca>";

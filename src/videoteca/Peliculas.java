@@ -64,7 +64,16 @@ public class Peliculas {
         
     }
         
+    public Pelicula get(int id){
         
+       
+        for(Pelicula pelicula : peliculas){
+           if(pelicula.getId()==id){
+               return pelicula;
+           }
+        }
+        return null;
+    }
         
         
     
