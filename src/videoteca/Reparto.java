@@ -8,7 +8,9 @@ package videoteca;
 import java.util.ArrayList;
 import java.util.List;
 import javax.json.Json;
+import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
+import javax.json.JsonObject;
 
 /**
  *
@@ -16,6 +18,17 @@ import javax.json.JsonArrayBuilder;
  */
 public class Reparto {
     private List<Actor> actores= new ArrayList<>();
+    
+    public Reparto(){
+        
+    }
+    
+    public Reparto(JsonArray a){
+        for(int i=0;i<a.size();i++){
+            JsonObject o=a.getJsonObject(i);
+            actores.add(new Actor(o));
+        }
+    }
     
     public void add(Actor a){
         actores.add(a);
@@ -43,5 +56,6 @@ public class Reparto {
         }
         return ja;
     }
+   
     
 }

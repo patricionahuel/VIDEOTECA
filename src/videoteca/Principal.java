@@ -5,7 +5,19 @@
  */
 package videoteca;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
+import javax.json.stream.JsonParser;
 
 /**
  *
@@ -58,7 +70,14 @@ public class Principal {
             case 2:
                nuevaVideoteca();
                break;
-        
+            case 3:
+                guardar();
+                break;
+            case 4:
+                cargar();
+                break;
+                
+                  
         }
     }
     
@@ -117,5 +136,48 @@ public class Principal {
         
         return reparto;
     }
+    static void guardar ()
+    {
+        String a;
+        Scanner sc= new Scanner(System.in);
+        System.out.println("Introduce nombre del fichero donde guardar");
+        a=sc.nextLine();
+        File f=new File(a);
+        try(FileOutputStream fos=new FileOutputStream(f);
+            OutputStreamWriter osw=new OutputStreamWriter(fos,StandardCharsets.UTF_8);
+            PrintWriter pw=new PrintWriter(osw); ){
+           
+            JsonObjectBuilder j=videoteca.toJson();
+            
+            pw.print(j.build().toString());
+            
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+        
+    }
     
+    static void cargar()
+    {
+        String a;
+        Scanner sc= new Scanner(System.in);
+        System.out.println("Introduce nombre del fichero a cargar");
+        a=sc.nextLine(); 
+        
+        File f=new File(a);
+        try(FileInputStream fis=new FileInputStream(f);
+            InputStreamReader isr=new InputStreamReader(fis);
+            JsonParser parser=Json.createParser(isr);){
+            
+            JsonObject o=parser.getObject();
+            
+            videoteca=new Videoteca(o);
+            System.out.println("Base de datos JSON cargada.");
+        }
+        catch(IOException e){
+            
+        }
+        
+    }
 }

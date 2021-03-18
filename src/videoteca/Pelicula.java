@@ -5,7 +5,9 @@
  */
 package videoteca;
 
+import java.math.BigDecimal;
 import javax.json.Json;
+import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 
 /**
@@ -37,6 +39,13 @@ public class Pelicula {
         this(siguienteId,titulo,sinopsis,reparto,genero,IMDB);
         siguienteId++;
         
+    }
+    
+    
+    public Pelicula(JsonObject o){
+      
+        this(o.getJsonNumber("id").intValue(),o.getString("titulo"),o.getString("sinopsis"),new Reparto(o.getJsonArray("reparto")),o.getString("genero"),o.getString("IMDB"));
+
     }
 
     public int getId() {
@@ -97,8 +106,9 @@ public class Pelicula {
      public JsonObjectBuilder toJson(){
         JsonObjectBuilder json=Json.createObjectBuilder();
         
-        json.add("nombre",titulo);
-        json.add("enlace",sinopsis);
+        json.add("id", id);
+        json.add("titulo",titulo);
+        json.add("sinopsis",sinopsis);
         json.add("reparto",reparto.toJson());
         json.add("genero", genero);
         json.add("IMDB",IMDB);

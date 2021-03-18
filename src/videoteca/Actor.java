@@ -5,8 +5,8 @@
  */
 package videoteca;
 
-import java.math.BigDecimal;
 import javax.json.Json;
+import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 
 
@@ -23,7 +23,10 @@ public class Actor {
     {
         this.nombre=nombre;
         this.enlace=enlace;
-        
+    }
+    
+    public Actor (JsonObject o){
+        this(o.getString("nombre"),o.getString("enlace"));
     }
 
     public String getNombre() {
@@ -55,4 +58,5 @@ public class Actor {
         json.add("enlace",enlace);
         return json;
     }
+    
 }

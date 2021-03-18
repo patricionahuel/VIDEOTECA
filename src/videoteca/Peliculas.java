@@ -8,14 +8,30 @@ package videoteca;
 import java.util.ArrayList;
 import java.util.List;
 import javax.json.Json;
+import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
+import javax.json.JsonObject;
 
 /**
  *
  * @author patricio
  */
 public class Peliculas {
-      private List<Pelicula> peliculas= new ArrayList<>();
+    private List<Pelicula> peliculas= new ArrayList<>();
+    
+    public Peliculas(){
+        
+    }
+    
+    public Peliculas (JsonArray a)
+    {
+        for (int i=0; i<a.size();i++)
+        {
+            JsonObject o=a.getJsonObject(i);
+            peliculas.add(new Pelicula(o));
+        }
+        
+    }
     
     public void add(Pelicula a){
         peliculas.add(a);

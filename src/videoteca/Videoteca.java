@@ -6,7 +6,9 @@
 package videoteca;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.json.Json;
+import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 
 /**
@@ -32,6 +34,9 @@ public class Videoteca {
         this.ubicacion = ubicacion;
         this.peliculas = new Peliculas();
         this.fechaActualizacion = LocalDate.now();
+    }
+    public Videoteca(JsonObject o){
+        this(o.getString("nombre"),o.getString("ubicacion"),new Peliculas(o.getJsonArray("peliculas")),LocalDate.parse(o.getString("fechaActualizacion"),DateTimeFormatter.ISO_LOCAL_DATE));
     }
 
     public String getNombre() {
