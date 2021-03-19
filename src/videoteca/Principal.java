@@ -13,6 +13,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 import java.util.Scanner;
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -79,8 +80,10 @@ public class Principal {
                 cargar();
                 break;
             case 5:
+                consultarGenero();
                 break;
             case 6:
+                consultarPelicula();
                 break;
             case 7:
                 System.out.println("adios");
@@ -176,7 +179,7 @@ public class Principal {
         try (FileInputStream fis = new FileInputStream(f);
                 InputStreamReader isr = new InputStreamReader(fis);
                 JsonParser parser = Json.createParser(isr);) {
-
+            parser.next();
             JsonObject o = parser.getObject();
 
             videoteca = new Videoteca(o);
@@ -201,5 +204,21 @@ public class Principal {
         else{
             System.out.println("Pelicula no encontrada");
         }
+        
+        
+    }
+    public static void consultarGenero()
+    {
+       String g;
+       System.out.println("intriduce genero");
+       Scanner sc= new Scanner(System.in);
+       g=sc.nextLine();
+       
+       List<Pelicula> l=videoteca.buscarGenero(g);
+       for (Pelicula pelicula: l)
+       {
+           System.out.println(pelicula);
+       }
+       
     }
 }

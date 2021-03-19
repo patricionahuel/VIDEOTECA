@@ -75,6 +75,19 @@ public class Peliculas {
         return null;
     }
         
+    public List<Pelicula> buscarGenero(String genero){
+        List<Pelicula> l=new ArrayList<>();
+        for(Pelicula pelicula : peliculas)
+        {
+            if(pelicula.getGenero().equals(genero))
+            {
+                l.add(pelicula);
+            }
+        }
+        
+        
+        return l;
+    }
         
     
 }

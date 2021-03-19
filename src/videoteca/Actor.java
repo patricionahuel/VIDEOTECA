@@ -59,4 +59,10 @@ public class Actor {
         return json;
     }
     
+     @Override
+     public String toString(){
+         return "NOMBRE: "+nombre+"\n"
+                 + "ENLACE: "+enlace;
+                 
+     }
 }

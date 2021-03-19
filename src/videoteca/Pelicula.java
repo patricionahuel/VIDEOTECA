@@ -115,6 +115,15 @@ public class Pelicula {
         return json;
     }
     
+     @Override
+     public String toString(){
+         return "ID: "+id+"\n"
+                 + "Titulo: "+titulo+"\n"
+                 + "Sinopsis: "+sinopsis+"\n"
+                 + "Reparto: \n"+reparto.toString()+"\n"
+                 + "Genero: "+genero+"\n"
+                 + "IMDB: "+IMDB;
+     }
 }
 
 

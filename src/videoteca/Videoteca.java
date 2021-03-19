@@ -7,6 +7,7 @@ package videoteca;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
@@ -101,5 +102,8 @@ public class Videoteca {
         return json;
     }
    
+    public List<Pelicula> buscarGenero(String genero){
+        return peliculas.buscarGenero(genero);
+    }
     
 }

@@ -56,6 +56,16 @@ public class Reparto {
         }
         return ja;
     }
+    
+    @Override
+    public String toString(){
+        String s="";
+        for (Actor actor : actores)
+        {
+            s+=actor.toString()+"\n";
+        }
+        return s;
+    }
    
     
 }
