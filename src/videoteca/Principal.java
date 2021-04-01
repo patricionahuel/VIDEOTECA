@@ -25,7 +25,7 @@ import javax.json.stream.JsonParser;
  * @author patricio
  */
 public class Principal {
-    // comentario prueba
+    
     private static Videoteca videoteca = null;
 
     public static void main(String[] args) {
